@@ -1,0 +1,96 @@
+<div class="main">
+    <form [formGroup]="userCVFormGroup"> 
+
+        <div class="container">
+            <div class="outputHeader">
+            Output: 
+            </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Name and Surname : </label>
+                        <input matInput type="text" class="form-control" formControlName="fullName"> 
+                        <br/> 
+                        <br/> 
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Role: </label>
+                        <input matInput type="text" class="form-control" formControlName="role"> 
+                        <br/> 
+                        <br/> 
+                    </div>
+                </div>
+
+                <label>Experience: </label>
+                <input matInput type="text" class="form-control" formControlName="experience"> 
+                <br/> 
+                <br/> 
+
+                <label>Type of projects: </label>
+                <input matInput type="text" class="form-control" formControlName="typeOfProjects"> 
+                <br/> 
+                <br/> 
+
+                <label>Technology stack: </label>
+                <input matInput type="text" class="form-control" formControlName="technologyStack"> 
+                <br/> 
+                <br/> 
+
+                <div formArrayName="educationList">
+                    <label>Education: </label>
+                    <div *ngFor="let edu of educationList.controls, let i=index;">
+                        <mat-form-field appearance="fill" [formGroupName]="i">
+                            <label>school name: </label>
+                            <input matInput type="text" class="form-control" formControlName="school"> 
+                            <br/> 
+                            <label>description: </label>
+                            <input matInput type="text" class="form-control" formControlName="description"> 
+                            <br/> 
+                            <label>period: </label>
+                            <input matInput type="text" class="form-control" formControlName="period"> 
+                        </mat-form-field>
+                        <button type='button' (click)="removeEducation(i)">remove this education</button>
+                    </div>
+                    <br>
+                    <button type='button' (click)="addEducation()">add next education</button>   
+                </div>
+                <br/> 
+
+                <label>Languages: </label>
+                <input matInput type="text" class="form-control" formControlName="languages"> 
+                <br/> 
+                <br/> 
+
+                <div formArrayName="detailedExperienceList">
+                <label>Detailed experience:</label>
+                <br/>                   
+                <div *ngFor="let exp of detailedExperienceList.controls; let i=index">
+                    <mat-form-field appearance="fill" [formGroupName]="i">
+                        <label>Job Role: </label>
+                        <input matInput type="text" class="form-control" formControlName="jobRole"> 
+                        <br/> 
+                        <label>Company: </label>
+                        <input matInput type="text" class="form-control" formControlName="company"> 
+                        <br/> 
+                        <label>Time Period: </label>
+                        <input matInput type="text" class="form-control" formControlName="timePeriod"> 
+                    </mat-form-field>
+                    <button type='button' (click)="removeExperience(i)" >remove experience</button>
+                <br>
+                </div>
+                <br>
+                <button type='button' (click)="addExperience()">add new experience</button>
+             <br><br>
+            </div>
+
+                <input type="button" (click)="generateFromOldTemplate()" value="generate from old template"> 
+
+                <input type="button" (click)="generateFromNewTemplate()" value="generate from new template"> 
+
+        </div>
+    </form>
+
+</div>
