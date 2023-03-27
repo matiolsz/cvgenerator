@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ManualGenerationComponent } from './manual-generation/manual-generation.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: 'manual', component: ManualGenerationComponent},
@@ -25,18 +27,19 @@ const routes: Routes = [
     FormComponent,
     ReadPdfComponent,
     MainPageComponent,
-    ManualGenerationComponent,
-    
+    ManualGenerationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxExtendedPdfViewerModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [NgxExtendedPdfViewerModule],
   bootstrap: [AppComponent]
