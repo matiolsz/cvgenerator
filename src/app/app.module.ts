@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 const routes: Routes = [
   {path: 'manual', component: ManualGenerationComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
     FormComponent,
     ReadPdfComponent,
     MainPageComponent,
-    ManualGenerationComponent
+    ManualGenerationComponent,
+    DragAndDropDirective
   ],
   imports: [
     BrowserModule,

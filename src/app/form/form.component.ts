@@ -8,11 +8,12 @@ import { PdfServiceService } from '../services/pdf-service.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
 
   userCVFormGroup!: FormGroup;
+  templateType = 'new';
 
   constructor(private formBuilder: FormBuilder,
     private pdfService: PdfServiceService,
@@ -31,8 +32,8 @@ export class FormComponent implements OnInit {
       detailedExperienceList: this.formBuilder.array([this.getDetailedExperienceControl()]),
     })
   }
-  
-  private getEducationControl(): FormGroup {  
+
+  private getEducationControl(): FormGroup {
     return this.formBuilder.group({
       school:'',
       description:'',
@@ -40,7 +41,7 @@ export class FormComponent implements OnInit {
     })
   }
 
-  private getDetailedExperienceControl(): FormGroup {  
+  private getDetailedExperienceControl(): FormGroup {
     return this.formBuilder.group({
       jobRole:'',
       company:'',
@@ -72,6 +73,13 @@ export class FormComponent implements OnInit {
     this.detailedExperienceList.removeAt(i);
   }
 
+  generateTemplate() {
+    if (this.templateType === 'old') {
+      this.generateFromOldTemplate();
+    } else {
+      this.generateFromNewTemplate();
+    }
+  }
   generateFromOldTemplate() {
 
       let userCV = new UserCV();
@@ -83,7 +91,7 @@ export class FormComponent implements OnInit {
       userCV.educationList = this.userCVFormGroup.controls['educationList'].value;
       userCV.languages = this.userCVFormGroup.controls['languages'].value;
       userCV.detailedExperienceList = this.userCVFormGroup.controls['detailedExperienceList'].value;
-      
+
       console.log(userCV);
 
       return this.pdfService.generate(userCV).subscribe((response) => {
@@ -114,7 +122,7 @@ export class FormComponent implements OnInit {
     userCV.educationList = this.userCVFormGroup.controls['educationList'].value;
     userCV.languages = this.userCVFormGroup.controls['languages'].value;
     userCV.detailedExperienceList = this.userCVFormGroup.controls['detailedExperienceList'].value;
-    
+
     console.log(userCV);
 
     return this.pdfService.generatePdf(userCV).subscribe((response) => {
