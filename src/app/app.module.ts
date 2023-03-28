@@ -13,6 +13,7 @@ import { ManualGenerationComponent } from './manual-generation/manual-generation
 import { RouterModule, Routes } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const routes: Routes = [
   {path: 'manual', component: ManualGenerationComponent},
@@ -39,7 +40,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [NgxExtendedPdfViewerModule],
   bootstrap: [AppComponent]
