@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ManualGenerationComponent } from './manual-generation/manual-generation.component';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { HeaderComponent } from './header/header.component';
 import { LinkedinCvGenerationComponent } from './linkedin-cv-generation/linkedin-cv-generation.component';

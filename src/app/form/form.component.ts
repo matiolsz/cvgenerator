@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserCV } from '../model/userCV.model';
 import { PdfServiceService } from '../services/pdf-service.service';
 
@@ -11,13 +10,11 @@ import { PdfServiceService } from '../services/pdf-service.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-
   userCVFormGroup!: FormGroup;
-  templateType = 'new';
+  isTemplateTypeOld = false;
 
   constructor(private formBuilder: FormBuilder,
-    private pdfService: PdfServiceService,
-    private router: Router) { }
+    private pdfService: PdfServiceService) { }
 
   ngOnInit(): void {
 
@@ -74,7 +71,7 @@ export class FormComponent implements OnInit {
   }
 
   generateTemplate() {
-    if (this.templateType === 'old') {
+    if (this.isTemplateTypeOld) {
       this.generateFromOldTemplate();
     } else {
       this.generateFromNewTemplate();

@@ -101,40 +101,39 @@
         <button type='button' (click)="addExperience()">add new experience</button>
         <br><br>
       </div>
-
-      <div class="form-group">
-        <label class="mr-1">Template Type:</label>
-        <div class="form-check form-check-inline">
-          <input id="templateRadio0"
-                 class="form-check-input"
-                 type="radio"
-                 name="templateType"
-                 [(ngModel)]="templateType"
-                 value="old">
-          <label class="form-check-label"
-                 for="templateRadio0">
-            Old
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input id="templateRadio1"
-                 class="form-check-input"
-                 type="radio"
-                 name="templateType"
-                 [(ngModel)]="templateType"
-                 checked
-                 value="new">
-          <label class="form-check-label"
-                 for="templateRadio1">
-            New
-          </label>
-        </div>
-      </div>
-      <div class="w-100 d-flex mt-4">
-        <button class="m-auto" type="button"
-                (click)="generateTemplate()">Generate Template</button>
-      </div>
     </div>
   </form>
-
+  <div class="container">
+    <div class="form-group">
+      <label class="mr-1">Template Type:</label>
+      <div class="form-check form-check-inline">
+        <input id="template0"
+               class="form-check-input"
+               type="radio"
+               name="templateType"
+               [(ngModel)]="isTemplateTypeOld"
+               [value]="true">
+        <label class="form-check-label"
+               for="template0">
+          Old
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input id="template1"
+               class="form-check-input"
+               type="radio"
+               name="templateType"
+               [(ngModel)]="isTemplateTypeOld"
+               [value]="false">
+        <label class="form-check-label"
+               for="template1">
+          New
+        </label>
+      </div>
+    </div>
+    <div class="w-100 d-flex mt-4">
+      <button class="m-auto" type="button"
+              (click)="generateTemplate()">Generate Template</button>
+    </div>
+  </div>
 </div>
