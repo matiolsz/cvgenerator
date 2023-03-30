@@ -7,9 +7,10 @@
            type="file"
            (change)="onFileSelected($event)"
            [multiple]="false">
-    <i class="fa fa-upload"></i>
+    <fa-icon [icon]="faUpload"
+             title="Drag & Drop"></fa-icon>
     <h5>{{'Drag and drop file here or' | uppercase}}</h5>
-    <label class="upload-label"
+    <label class="button"
            for="fileDropRef">{{'Browse for file' | uppercase}}</label>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgxExtendedPdfViewerModule, NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-read-pdf',
@@ -9,6 +10,7 @@ import { NgxExtendedPdfViewerModule, NgxExtendedPdfViewerService, pdfDefaultOpti
 
 })
 export class ReadPdfComponent {
+  faUpload = faUpload
   selectedFilePath: string = "";
   selectedFileB64: string = "";
   isFileImage = false;

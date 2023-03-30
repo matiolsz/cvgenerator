@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserCV } from '../model/userCV.model';
 import { PdfServiceService } from '../services/pdf-service.service';
-
+import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-form',
@@ -10,6 +10,7 @@ import { PdfServiceService } from '../services/pdf-service.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  faDeleteLeft = faDeleteLeft;
   userCVFormGroup!: FormGroup;
   isTemplateTypeOld = false;
 
