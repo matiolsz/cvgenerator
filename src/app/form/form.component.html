@@ -39,7 +39,8 @@
                        formControlName="role">
               </div>
 
-              <div class="form-group mb-4">
+              <div *ngIf="!isTemplateTypeOld"
+                   class="form-group mb-4">
                 <label>Experience:</label>
                 <input type="text"
                        class="form-control"
@@ -94,21 +95,24 @@
                    class="accordion-collapse collapse show"
                    [attr.data-bs-parent]="'#educationAccordion' + i">
                 <div class="accordion-body">
-                  <div class="form-group mb-4" [formGroupName]="i">
+                  <div class="form-group mb-4"
+                       [formGroupName]="i">
                     <label>School Name:</label>
                     <input class="form-control"
                            type="text"
                            formControlName="school">
                   </div>
 
-                  <div class="form-group mb-4" [formGroupName]="i">
+                  <div class="form-group mb-4"
+                       [formGroupName]="i">
                     <label>Description:</label>
                     <input type="text"
                            class="form-control"
                            formControlName="description">
                   </div>
 
-                  <div class="form-group" [formGroupName]="i">
+                  <div class="form-group"
+                       [formGroupName]="i">
                     <label>Period:</label>
                     <input type="text"
                            class="form-control"
@@ -120,9 +124,10 @@
           </div>
         </div>
         <div class="w-100 d-flex mt-1">
-          <button class="button m-auto"
+          <button class="btn btn-light m-auto"
                   type='button'
-                  (click)="addEducation()">Add</button>
+                  title="Add Education"
+                  (click)="addEducation()"><fa-icon class="add" [icon]="faPlus"></fa-icon> Education</button>
         </div>
       </div>
 
@@ -149,28 +154,33 @@
                    class="accordion-collapse collapse show"
                    [attr.data-bs-parent]="'#detailedExperienceAccordion' + i">
                 <div class="accordion-body">
-                  <div class="form-group mb-4" [formGroupName]="i">
+                  <div class="form-group mb-4"
+                       [formGroupName]="i">
                     <label>Job Role:</label>
                     <input class="form-control"
                            type="text"
                            formControlName="jobRole">
                   </div>
 
-                  <div class="form-group mb-4" [formGroupName]="i">
+                  <div class="form-group mb-4"
+                       [formGroupName]="i">
                     <label>Company:</label>
                     <input type="text"
                            class="form-control"
                            formControlName="company">
                   </div>
 
-                  <div class="form-group mb-4" [formGroupName]="i">
+                  <div class="form-group mb-4"
+                       [formGroupName]="i">
                     <label>Time Period:</label>
                     <input type="text"
                            class="form-control"
                            formControlName="timePeriod">
                   </div>
 
-                  <div class="form-group" [formGroupName]="i">
+                  <div *ngIf="isTemplateTypeOld"
+                       class="form-group"
+                       [formGroupName]="i">
                     <label>Description:</label>
                     <input type="text"
                            class="form-control"
@@ -183,9 +193,10 @@
           </div>
         </div>
         <div class="w-100 d-flex mt-1">
-          <button class="button m-auto"
+          <button class="btn btn-light m-auto"
                   type='button'
-                  (click)="addExperience()">Add</button>
+                  title="Add Experience"
+                  (click)="addExperience()"><fa-icon class="add" [icon]="faPlus"></fa-icon> Experience</button>
         </div>
       </div>
     </div>

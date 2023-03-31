@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserCV } from '../model/userCV.model';
 import { PdfServiceService } from '../services/pdf-service.service';
-import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
+import { faDeleteLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-form',
@@ -11,6 +11,7 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 })
 export class FormComponent implements OnInit {
   faDeleteLeft = faDeleteLeft;
+  faPlus = faPlus;
   userCVFormGroup!: FormGroup;
   isTemplateTypeOld = false;
 
