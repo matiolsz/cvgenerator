@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
 
     this.userCVFormGroup = this.formBuilder.group({
       fullName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      overallDescription: new FormControl('', [Validators.required, Validators.minLength(2)]),
       role: new FormControl('', [Validators.required, Validators.minLength(2)]),
       experience: new FormControl('', [Validators.required, Validators.minLength(2)]),
       typeOfProjects: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -43,7 +44,8 @@ export class FormComponent implements OnInit {
     return this.formBuilder.group({
       jobRole:'',
       company:'',
-      timePeriod:''
+      timePeriod:'',
+      description:''
     })
   }
 
@@ -82,7 +84,8 @@ export class FormComponent implements OnInit {
 
       let userCV = new UserCV();
       userCV.fullName = this.userCVFormGroup.controls['fullName'].value;
-      userCV.role =this.userCVFormGroup.controls['role'].value;
+      userCV.overallDescription = this.userCVFormGroup.controls['overallDescription'].value;
+      userCV.role = this.userCVFormGroup.controls['role'].value;
       userCV.experience = this.userCVFormGroup.controls['experience'].value;
       userCV.typeOfProjects = this.userCVFormGroup.controls['typeOfProjects'].value;
       userCV.technologyStack = this.userCVFormGroup.controls['technologyStack'].value;
@@ -113,6 +116,7 @@ export class FormComponent implements OnInit {
 
     let userCV = new UserCV();
     userCV.fullName = this.userCVFormGroup.controls['fullName'].value;
+    userCV.overallDescription = this.userCVFormGroup.controls['overallDescription'].value;
     userCV.role =this.userCVFormGroup.controls['role'].value;
     userCV.experience = this.userCVFormGroup.controls['experience'].value;
     userCV.typeOfProjects = this.userCVFormGroup.controls['typeOfProjects'].value;
