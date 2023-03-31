@@ -21,11 +21,8 @@ export class PdfServiceService {
         "Accept": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       })
   };
-  const request = new Request(requestOptions);
   return this.httpClient.post(this.backendUrl, userCv, requestOptions);
 }
-  //   return this.httpClient.post<UserCV>(this.backendUrl, userCv);
-  // }
 
   generatePdf(userCv: UserCV): Observable<any> {
     const requestOptions : any = {
@@ -35,7 +32,6 @@ export class PdfServiceService {
         "Accept": "application/pdf"
       })
   };
-  const request = new Request(requestOptions);
   return this.httpClient.post(this.backendUrlPdf, userCv, requestOptions);
 }
 
