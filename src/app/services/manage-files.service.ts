@@ -6,17 +6,29 @@ import { UserCV } from '../model/userCV.model';
 @Injectable({
   providedIn: 'root'
 })
-export class PdfServiceService {
+export class ManageFilesService {
 
   private backendUrl = 'http://localhost:8080/generate';
   private backendUrlPdf = 'http://localhost:8080/getpdf';
+  private resumeUrl = 'http://localhost:8080/cv/resume';
 
   constructor(private httpClient: HttpClient) { }
+
+  uploadPdfFile(file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/pdf',
+      }
+    };
+    return this.httpClient.post<any>(this.resumeUrl, formData, httpOptions);
+  }
 
   generate(userCv: UserCV): Observable<any> {
     const requestOptions : any = {
       observe: "response",
-      responseType: "blob",           
+      responseType: "blob",
       headers: new HttpHeaders({
         "Accept": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       })
@@ -27,7 +39,7 @@ export class PdfServiceService {
   generatePdf(userCv: UserCV): Observable<any> {
     const requestOptions : any = {
       observe: "response",
-      responseType: "blob",           
+      responseType: "blob",
       headers: new HttpHeaders({
         "Accept": "application/pdf"
       })

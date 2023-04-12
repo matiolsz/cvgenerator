@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NgxExtendedPdfViewerModule, NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { ManageFilesService } from '../services/manage-files.service';
 
 @Component({
   selector: 'app-read-pdf',
@@ -17,7 +18,7 @@ export class ReadPdfComponent {
   isFileDocument = false;
   file: any;
 
-  constructor(private pdfService: NgxExtendedPdfViewerService) { }
+  constructor(private manageFilesService: ManageFilesService) { }
 
   onFileSelected(event: any): void {
     if (event.target?.files[0]) {
@@ -26,6 +27,7 @@ export class ReadPdfComponent {
   }
 
   onFileUpload(file: File) {
+    // this.uploadPdfFile(file);
     var reader = new FileReader();
     reader.readAsDataURL(file); // read file as data url
     reader.onload = (event) => { // called once readAsDataURL is completed
@@ -40,5 +42,16 @@ export class ReadPdfComponent {
         this.isFileDocument = true;
       }
     }
+  }
+
+  uploadPdfFile(file: File) {
+    this.manageFilesService.uploadPdfFile(file).subscribe({
+      next: (data) => {
+        console.log('Upload File ' + data);
+      },
+      error: (error) => {
+        console.error('error', error.error);
+      }
+    });
   }
 }

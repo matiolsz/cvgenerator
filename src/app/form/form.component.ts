@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserCV } from '../model/userCV.model';
-import { PdfServiceService } from '../services/pdf-service.service';
+import { ManageFilesService } from '../services/manage-files.service';
 import { faDeleteLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
   isTemplateTypeOld = false;
 
   constructor(private formBuilder: FormBuilder,
-    private pdfService: PdfServiceService) { }
+              private manageFilesService: ManageFilesService) { }
 
   ngOnInit(): void {
 
@@ -96,7 +96,7 @@ export class FormComponent implements OnInit {
 
       console.log(userCV);
 
-      return this.pdfService.generate(userCV).subscribe((response) => {
+      return this.manageFilesService.generate(userCV).subscribe((response) => {
 
         console.log(response);
 
@@ -128,7 +128,7 @@ export class FormComponent implements OnInit {
 
     console.log(userCV);
 
-    return this.pdfService.generatePdf(userCV).subscribe((response) => {
+    return this.manageFilesService.generatePdf(userCV).subscribe((response) => {
 
       console.log(response);
 
