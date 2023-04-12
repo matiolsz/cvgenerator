@@ -1,0 +1,16 @@
+.leftPanel {
+    float: left;
+    width: 50%;
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+    padding: 1rem;
+  }
+  
+  .rightPanel {
+    float: left;
+    width: 50%;
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: scroll;
+    padding: 1rem;
+  }

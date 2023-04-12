@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { ManageFilesService } from '../services/manage-files.service';
+import { UserCV } from '../model/userCV.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-read-pdf',
   templateUrl: './read-pdf.component.html',
   styleUrls: ['./read-pdf.component.scss'],
   providers: [NgxExtendedPdfViewerModule]
-
 })
 export class ReadPdfComponent {
   faUpload = faUpload
@@ -18,7 +19,8 @@ export class ReadPdfComponent {
   isFileDocument = false;
   file: any;
 
-  constructor(private manageFilesService: ManageFilesService) { }
+  constructor(private manageFilesService: ManageFilesService,
+              private router: Router) { }
 
   onFileSelected(event: any): void {
     if (event.target?.files[0]) {
@@ -42,6 +44,21 @@ export class ReadPdfComponent {
         this.isFileDocument = true;
       }
     }
+
+    if((this.router.url)==='/linkedin-cv'){
+      console.log("cv - parsing");
+      this.manageFilesService.parseLinkedInCv(file)
+      .subscribe(
+          (cv:any) => {
+            let userCv = <UserCV>JSON.parse(JSON.stringify(cv.body));
+            console.log(userCv);
+    });
+
+    }
+    // if((this.router.url)==='/linkedin-resume'){
+    //   console.log("resume - parsing");
+    //   this.mypdfService.parseLinkedInResume(file);
+    // }
   }
 
   uploadPdfFile(file: File) {
